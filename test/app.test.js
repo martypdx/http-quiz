@@ -25,4 +25,18 @@ describe('Penguins API', () => {
                 assert.deepEqual();
             });
     });
+
+    it('deletes a penguin', () => {
+        return chai.request(app)
+            .del(`api/penguins/${penguin.id}`)
+            .then(res => {
+                assert.equal(res.status, 200);
+            })
+            .then(() => {
+                return chai.request(app).get(`api/penguin/${penguin.id}`);
+            })
+            .then(res => {
+                assert.equal(res.status, 404);
+            });
+    });
 });
