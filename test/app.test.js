@@ -10,11 +10,11 @@ describe('Pirates API', () => {
         return chai.request(app)
             .get('/api/penguins')
             .then(({ body }) => {
-                assert.deepEqual(body, ['bernard', 'bernice']);
+                assert.deepEqual(body, ['bernice', 'bernard']);
             });
     });
 
-    it('gets a single penguins with query format=full', () => {
+    it('gets a single penguin with query format=full', () => {
         return chai.request(app)
             .get('/api/penguins/king?format=full')
             .then(({ body }) => {
@@ -27,7 +27,7 @@ describe('Pirates API', () => {
             });
     });
 
-    it('gets a single penguins with query format=simple', () => {
+    it('gets a single penguin with query format=simple', () => {
         return chai.request(app)
             .get('/api/penguins/king?format=simple')
             .then(({ body }) => {
@@ -35,10 +35,18 @@ describe('Pirates API', () => {
             });
     });
     
+    it('gets a single penguin with no query', () => {
+        return chai.request(app)
+            .get('/api/penguins/king')
+            .then(({ body }) => {
+                assert.deepEqual(body, { name: 'bernice' });
+            });
+    });
+
     it('deletes mistake', () => {
         return chai.request(app)
             .del('/mistake')
-            .then((res) => {
+            .then(res => {
                 assert.deepEqual(res.text, '<p>All tracks covered</p>');
             });
     });
@@ -46,8 +54,8 @@ describe('Pirates API', () => {
     it('returns 404 err if bad path', () => {
         return chai.request(app)
             .get('/api/pongons')
-            .then((response) => {
-                assert.equal(response.status, 404);
+            .then(res => {
+                assert.equal(res.status, 404);
             });
     });
 });
