@@ -19,7 +19,7 @@ describe('Pirates API', () => {
         return chai.request(app)
             .get('/api/penguins')
             .then(res => {
-                assert.equal(res.text, 'bernice, bernard');
+                assert.equal(res.text, ('bernice', 'bernard'));
             });
     });
 });
