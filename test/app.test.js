@@ -34,6 +34,14 @@ describe('Pirates API', () => {
                 assert.deepEqual(body, { name: 'bernice' });
             });
     });
+    
+    it('deletes mistake', () => {
+        return chai.request(app)
+            .del('/mistake')
+            .then((res) => {
+                assert.deepEqual(res.text, '<p>All tracks covered</p>');
+            });
+    });
 
     it('returns 404 err if bad path', () => {
         return chai.request(app)
