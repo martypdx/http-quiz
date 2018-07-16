@@ -13,4 +13,17 @@ describe('Pirates API', () => {
                 assert.deepEqual(body, ['bernard', 'bernice']);
             });
     });
+
+    it('gets a single penguins with query format=full', () => {
+        return chai.request(app)
+            .get('/api/penguins/king?format=full')
+            .then(({ body }) => {
+                const expected = { 
+                    name: 'bernice',
+                    description: 'What a penguin!',
+                    age: 7
+                };
+                assert.deepEqual(body, expected);
+            });
+    });
 });
