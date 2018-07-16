@@ -12,6 +12,10 @@ describe('Pirates API', () => {
         age: 7
     };
 
+    let simpleBernice = { 
+        name: 'bernice' 
+    };
+
     it('responds with hello world on GET', () => {
         return chai.request(app)
             .get('/')
@@ -29,11 +33,19 @@ describe('Pirates API', () => {
             });
     });
 
-    it('responds correctly with queries', () => {
+    it('responds correctly with full query', () => {
         return chai.request(app)
             .get('/api/penguin/king?format=full')
             .then(res => {
                 assert.deepEqual(res.body, bernice);
+            });
+    });
+    
+    it('responds correctly with simple query', () => {
+        return chai.request(app)
+            .get('/api/penguin/king?format=simple')
+            .then(res => {
+                assert.deepEqual(res.body, simpleBernice);
             });
     });
 });
