@@ -16,15 +16,6 @@ describe('Pirates API', () => {
         name: 'bernice' 
     };
 
-    it('responds with hello world on GET', () => {
-        return chai.request(app)
-            .get('/')
-            .then(res => {
-                assert.equal(res.status, 200);
-                assert.equal(res.text, 'hello world');
-            });
-    });
-
     it('responds with correct json response', () => {
         return chai.request(app)
             .get('/api/penguins')
@@ -54,6 +45,15 @@ describe('Pirates API', () => {
             .delete('/mistake')
             .then(res => {
                 assert.equal(res.text, '<p>All tracks covered</p>');
+            });
+    });
+
+    it('responds with 404 on any other response', () => {
+        return chai.request(app)
+            .get('/')
+            .then(res => {
+                assert.equal(res.status, 404);
+                assert.equal(res.text, 'These aren\'t the droids you\'re looking for.');
             });
     });
 });
