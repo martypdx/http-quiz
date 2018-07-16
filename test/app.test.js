@@ -48,4 +48,12 @@ describe('Pirates API', () => {
                 assert.deepEqual(res.body, simpleBernice);
             });
     });
+
+    it('returns correct response when calling DELETE on correct path', () => {
+        return chai.request(app)
+            .delete('/mistake')
+            .then(res => {
+                assert.equal(res.text, '<p>All tracks covered</p>');
+            });
+    });
 });
