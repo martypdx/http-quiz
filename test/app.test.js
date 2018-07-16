@@ -40,6 +40,14 @@ describe('Pirates API', () => {
             });
     });
 
+    it('still responds correctly when query is missing', () => {
+        return chai.request(app)
+            .get('/api/penguin/king?format=cool')
+            .then(res => {
+                assert.deepEqual(res.body, simpleBernice);
+            });
+    });
+
     it('returns correct response when calling DELETE on correct path', () => {
         return chai.request(app)
             .delete('/mistake')
