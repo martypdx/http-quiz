@@ -40,7 +40,23 @@ describe('Pirates API', () => {
             });
     });
 
-    it('still responds correctly when query is missing', () => {
+    it('still responds correctly when query is simple', () => {
+        return chai.request(app)
+            .get('/api/penguin/king?format=simple')
+            .then(res => {
+                assert.deepEqual(res.body, simpleBernice);
+            });
+    });
+
+    it('still responds correctly when query is nothing', () => {
+        return chai.request(app)
+            .get('/api/penguin/king?format=')
+            .then(res => {
+                assert.deepEqual(res.body, simpleBernice);
+            });
+    });
+
+    it('still responds correctly when query is something else', () => {
         return chai.request(app)
             .get('/api/penguin/king?format=cool')
             .then(res => {
