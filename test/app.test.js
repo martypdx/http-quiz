@@ -6,9 +6,9 @@ chai.use(chaiHttp);
 
 describe('Pirates API', () => {
 
-    it('write a test...', () => {
+    it('returns JSON pirate names', () => {
         assert.isOk(false, 'time to write your first test!');
-        // return chai.request(app)
-        // ...
+        return chai.request(app)
+       
     });
 });
