@@ -4,7 +4,7 @@ const { assert } = require('chai');
 // const app = require('../lib/app');
 chai.use(chaiHttp);
 
-describe('Pirates API', () => {
+describe('Penguins API', () => {
 
     it('write a test...', () => {
         assert.isOk(false, 'time to write your first test!');
