@@ -14,4 +14,12 @@ describe('Pirates API', () => {
                 assert.equal(res.text, 'hello world');
             });
     });
+
+    it('responds with correct json response', () => {
+        return chai.request(app)
+            .get('/api/penguins/')
+            .then(res => {
+                assert.deepEqual(res.body, ['bernice', 'bernard']);
+            });
+    });
 });
