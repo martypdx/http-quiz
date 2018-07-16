@@ -26,4 +26,20 @@ describe('Pirates API', () => {
                 assert.deepEqual(body, expected);
             });
     });
+
+    it('gets a single penguins with query format=simple', () => {
+        return chai.request(app)
+            .get('/api/penguins/king?format=simple')
+            .then(({ body }) => {
+                assert.deepEqual(body, { name: 'bernice' });
+            });
+    });
+
+    it('returns 404 err if bad path', () => {
+        return chai.request(app)
+            .get('/api/pongons')
+            .then((response) => {
+                assert.equal(response.status, 404);
+            });
+    });
 });
