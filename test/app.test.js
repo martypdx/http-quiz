@@ -6,7 +6,7 @@ chai.use(chaiHttp);
 
 describe('Pirates API', () => {
 
-    it('gets pirate names as JSON', () => {
+    it.skip('gets pirate names as JSON', () => {
         return chai.request(app)
             .get('/api/penguins')
             .then(res => {
@@ -14,19 +14,19 @@ describe('Pirates API', () => {
             });      
     });
 
-    it('returns penguin JSON object', () => {
+    it.skip('returns penguin JSON object', () => {
 
     });
 
-    it('returns just the name', () => {
+    it.skip('returns just the name', () => {
 
     });
 
-    it('returns tracks covered message on mistake path', () => {
+    it.skip('returns tracks covered message on mistake path', () => {
 
     });
 
-    it('responds with a 404 error', () => {
+    it.skip('responds with a 404 error', () => {
 
     });
 
