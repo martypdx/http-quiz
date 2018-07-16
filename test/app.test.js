@@ -42,4 +42,8 @@ describe('Pirates API', () => {
                 assert.match(res.text, /CANNOT/);
             });
     });
+
+    it('returns <p>All tracks recovered</p> on DELETE/mistake', () => {
+        
+    });
 });
