@@ -4,11 +4,17 @@ const { assert } = require('chai');
 // const app = require('../lib/app');
 chai.use(chaiHttp);
 
-describe('Pirates API', () => {
+const app = require('../lib/app'); 
 
-    it('write a test...', () => {
-        assert.isOk(false, 'time to write your first test!');
-        // return chai.request(app)
-        // ...
+describe('Penguins API', () => {
+
+    it('Returns a json response on GET...', () => {
+        return chai.request(app)
+            .get('/api/penguins')
+            .then(res => {
+                console.log(res.text);
+                assert.deepEqual(res.text, ['bernice', 'bernard']);
+                assert.equal(res.header['content-type'], 'application/json');
+            });
     });
 });
