@@ -9,5 +9,6 @@ describe('Pirates API', () => {
     it('write a test...', () => {
         assert.isOk(false, 'time to write your first test!');
         // return chai.request(app)
+        // ...
     });
 });
