@@ -4,7 +4,7 @@ const { assert } = require('chai');
 const app = require('../lib/app');
 chai.use(chaiHttp);
 
-describe('Pirates API', () => {
+describe('Quiz API', () => {
 
     it('Gets a list of penguins', () => {
         return chai.request(app)
@@ -14,9 +14,17 @@ describe('Pirates API', () => {
             });
     });
 
-    it('Returns penguin bernice with full properties when format=full', () => {
+    it('Gets a simple penguin', () => {
         return chai.request(app)
-            .get('/api/penguins/king?format=full')
+            .get('/api/penguin?format=simple')
+            .then(res => {
+                assert.deepEqual(res.body, { name: 'bernice' });
+            });
+    });
+
+    it('Gets a full format penguin', () => {
+        return chai.request(app)
+            .get('/api/penguin?format=full')
             .then(res => {
                 assert.deepEqual(res.body, { 
                     name: 'bernice',
@@ -26,28 +34,20 @@ describe('Pirates API', () => {
             });
     });
 
-    it('Returns penguin bernice with just name property when format=simple', () => {
+    it('Returns coverup on delete of mistake', () => {
         return chai.request(app)
-            .get('/api/penguins/king?format=simple')
+            .delete('/mistake')
             .then(res => {
-                assert.deepEqual(res.body, { name: 'bernice' });
+                assert.equal(res.text, '<p>All tracks covered</p>');
             });
     });
 
-    it('responds with 404 on not found', () => {
+    it('Returns 404 on unknown path', () => {
         return chai.request(app)
-            .get('/sad-path')
+            .get('/not-a-valid-path')
             .then(res => {
                 assert.equal(res.status, 404);
-                assert.match(res.text, /CANNOT/);
             });
     });
 
-    // it('returns <p>All tracks recovered</p> on DELETE /mistake', () => {
-    //     return chai.request(app)
-    //         .del('/api/mistake')
-    //         .then(res => {
-    //             assert.equal(res.text, '<p>All tracks recovered</p>');
-    //         });
-    // });
 });
