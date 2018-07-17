@@ -1,7 +1,7 @@
 {
   "name": "http-quiz",
   "version": "1.0.0",
-  "description": "",
+  "description": "HTTP Quiz ===",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -17,7 +17,7 @@
     "url": "git+https://github.com/alchemy-fullstack-js-summer-2018/http-quiz.git"
   },
   "keywords": [],
-  "author": "Marty Nelson <marty@martypdx.com>",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/alchemy-fullstack-js-summer-2018/http-quiz/issues"
@@ -29,5 +29,9 @@
     "eslint": "^5.1.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.2"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }
